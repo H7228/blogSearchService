@@ -25,6 +25,8 @@ spring:
           enabled: true
   profiles:
     include: application-key
+    active: application-key
+
 
 springdoc:
   packages-to-scan: com.bebs.source
@@ -41,3 +43,14 @@ springdoc:
       enabled: true
   cache:
     disabled: true
+
+kakao:
+  rest-api-key: 5873946df1528ff9ccf0570a3d7a8cf6
+  url:
+    blog-search: https://dapi.kakao.com/v2/search/blog
+
+naver:
+  client-id: n94i0_8qLYd8Nm43hqhH
+  client-secret: kQPf76xfjT
+  url:
+    blog-search: https://openapi.naver.com/v1/search/blog.json

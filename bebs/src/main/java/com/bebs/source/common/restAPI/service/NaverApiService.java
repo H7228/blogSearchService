@@ -19,19 +19,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-@ConfigurationProperties(prefix = "kakao")
 public class NaverApiService {
 
     private final RestTemplate rest;
 
     @Value("${naver.client-id}")
-    private final String CLIENT_ID;
+    private String CLIENT_ID;
 
     @Value("${naver.client-secret}}")
-    private final String CLIENT_SECRET;
+    private String CLIENT_SECRET;
 
     @Value("${naver.url.blog-search}")
-    private final String BLOG_SEARCH_URL;
+    private String BLOG_SEARCH_URL;
 
     public NaverBlogSearchDTO searchNaverBlog(NaverBlogSearchRequestDTO request) {
         HttpHeaders headers = new HttpHeaders();

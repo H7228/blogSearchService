@@ -19,7 +19,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-@ConfigurationProperties(prefix = "kakao")
 public class KakaoApiService {
 
     private final RestTemplate rest;

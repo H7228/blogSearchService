@@ -1,3 +1,6 @@
+spring:
+  profiles:
+    active: application-key
 kakao:
   rest-api-key: 5873946df1528ff9ccf0570a3d7a8cf6
   url:
