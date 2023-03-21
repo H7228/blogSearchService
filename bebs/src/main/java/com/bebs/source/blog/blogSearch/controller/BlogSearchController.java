@@ -4,12 +4,15 @@ package com.bebs.source.blog.blogSearch.controller;
 import com.bebs.source.blog.blogSearch.dto.BlogSearchDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.bebs.source.blog.blogSearch.dto.BlogSearchRequestDTO;
 import com.bebs.source.blog.blogSearch.service.BlogSearchService;
 import lombok.RequiredArgsConstructor;
+
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequiredArgsConstructor

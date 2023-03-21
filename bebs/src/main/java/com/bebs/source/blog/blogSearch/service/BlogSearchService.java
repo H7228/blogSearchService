@@ -10,6 +10,7 @@ import com.bebs.source.common.restAPI.dto.naver.NaverBlogSearchDTO;
 import com.bebs.source.common.restAPI.service.KakaoApiService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,6 +34,8 @@ public class BlogSearchService {
         return result;
     }
 
+
+    @Cacheable(cacheNames = "searchBlog", key = "#request.keyword")
     private BlogSearchDTO searchBlogApi(BlogSearchRequestDTO request) {
         BlogSearchDTO result = this.searchKakaoBlog(request);
         if (result != null) {

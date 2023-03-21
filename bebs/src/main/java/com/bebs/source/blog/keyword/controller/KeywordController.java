@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,10 +22,8 @@ public class KeywordController {
 
     @Operation(summary=  "가장 많이 검색된 상위 10개의 Keyword를 조회"
             , description = "가장 많이 검색된 상위 10개의 Keyword를 조회한다.")
-    @Cacheable(cacheNames = "popularKeywords")
     @GetMapping("/popular")
     public List<KeywordDTO> retrievePopularKeywords() {
         return service.retrievePopularKeywords();
     }
-
 }

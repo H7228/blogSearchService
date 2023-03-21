@@ -26,4 +26,9 @@ public class KeywordEntity {
     @Column(name = "count")
     private Long count;
 
+
+    public KeywordEntity incrementCount() {
+        count++;
+        return this;
+    }
 }
