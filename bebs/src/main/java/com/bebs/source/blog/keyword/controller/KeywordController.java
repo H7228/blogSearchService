@@ -6,6 +6,7 @@ import com.bebs.source.blog.keyword.service.KeywordService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +19,9 @@ public class KeywordController {
 
     private final KeywordService service;
 
-
-    @Operation(summary=  "키워드로 블로그를 조희"
-            , description = "키워드로 블로그를 조회한다. 정확도순, 최신순으로 정렬할 수 있다.")
+    @Operation(summary=  "가장 많이 검색된 상위 10개의 Keyword를 조회"
+            , description = "가장 많이 검색된 상위 10개의 Keyword를 조회한다.")
+    @Cacheable(cacheNames = "popularKeywords")
     @GetMapping("/popular")
     public List<KeywordDTO> retrievePopularKeywords() {
         return service.retrievePopularKeywords();
