@@ -27,8 +27,7 @@
 ## API 명세
 http://localhost:8080/bebs-ui.html
 
-### Blog Search API
-#### 키워드로 블로그를 검색
+### 키워드로 블로그를 검색: Blog Search API
 > URL: GET /blog/search/keyword
 
 ##### Parameter
@@ -61,11 +60,12 @@ http://localhost:8080/bebs-ui.html
 - postDate: 게시일
 
 
-### Keyword API
-#### 가장 많이 검색된 상위 10개의 키워드를 조회
+### 가장 많이 검색된 상위 10개의 키워드를 조회:  Keyword API
 > URL: GET /keyword/popular
 
 ##### Request
+N/A
+
 ##### Response
 
 HTTP Status: 200 OK
