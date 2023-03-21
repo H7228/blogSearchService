@@ -2,6 +2,7 @@ package com.bebs.source.blog.keyword.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_keyword_m")
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class KeywordEntity {

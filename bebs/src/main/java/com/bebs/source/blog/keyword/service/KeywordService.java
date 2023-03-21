@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class KeywordService {
 
+
     private final ModelMapper mapper;
     private final KeywordRepository repository;
 
@@ -35,7 +36,7 @@ public class KeywordService {
     private void updateKeywordCount(KeywordEntity keywordEntity) {
         KeywordDTO dto = mapper.map(keywordEntity, KeywordDTO.class);
         dto.setCount(dto.getCount() + 1);
-        KeywordEntity entity = mapper.map(keywordEntity, KeywordEntity.class);
+        KeywordEntity entity = mapper.map(dto, KeywordEntity.class);
         repository.save(entity);
     }
 

@@ -14,5 +14,4 @@ public class KeywordDTO {
     private String id;
     private String keyword;
     private Long count;
-
 }

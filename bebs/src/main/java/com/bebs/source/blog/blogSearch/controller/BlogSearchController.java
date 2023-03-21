@@ -20,7 +20,8 @@ public class BlogSearchController {
     private final BlogSearchService service;
 
     @Operation(summary=  "키워드로 블로그를 조희"
-            , description = "키워드로 블로그를 조회한다. 정확도순, 최신순으로 정렬할 수 있다.")
+            , description = "키워드로 블로그를 조회한다. 정확도순, 최신순으로 정렬할 수 있다." +
+            "\n[sort] accuracy = 정확도순, recency = 최신순")
     @GetMapping("/keyword")
     public BlogSearchDTO searchBlogByKeyword(BlogSearchRequestDTO request) {
         request.isValidateInput();
