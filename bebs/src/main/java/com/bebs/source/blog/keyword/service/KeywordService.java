@@ -47,7 +47,6 @@ public class KeywordService {
         repository.save(mapper.map(keywordDTO, KeywordEntity.class));
     }
 
-    @Transactional(readOnly = true)
     public List<KeywordDTO> retrievePopularKeywords() {
         List<KeywordEntity> entities = repository.findTop10ByOrderByCountDesc();
         return entities.stream()
