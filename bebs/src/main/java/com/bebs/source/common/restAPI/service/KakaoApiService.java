@@ -47,7 +47,6 @@ public class KakaoApiService {
                     HttpMethod.GET,
                     entity,
                     KakaoBlogSearchDTO.class);
-
             if (response.getStatusCode().is2xxSuccessful()) {
                 return response.getBody();
             } else {

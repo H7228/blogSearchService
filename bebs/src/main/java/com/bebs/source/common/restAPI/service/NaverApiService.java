@@ -7,14 +7,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
+import java.nio.charset.Charset;
 
 @Service
 @Log4j2
@@ -26,7 +26,7 @@ public class NaverApiService {
     @Value("${naver.client-id}")
     private String CLIENT_ID;
 
-    @Value("${naver.client-secret}}")
+    @Value("${naver.client-secret}")
     private String CLIENT_SECRET;
 
     @Value("${naver.url.blog-search}")
@@ -34,6 +34,7 @@ public class NaverApiService {
 
     public NaverBlogSearchDTO searchNaverBlog(NaverBlogSearchRequestDTO request) {
         HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
         headers.set("X-Naver-Client-Id", CLIENT_ID);
         headers.set("X-Naver-Client-Secret", CLIENT_SECRET);
 

@@ -1,12 +1,12 @@
 package com.bebs.source.common.restAPI.dto.naver;
 
 import com.bebs.source.blog.blogSearch.dto.BlogSearchDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,31 +16,27 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class NaverBlogSearchDTO {
 
-    private Meta meta;
-    private List<Document> documents;
+    private List<Item> items;
+
+    private int start;
+    private int display;
+    private int total;
+    private String lastBuildDate;
 
     @Data
-    public static class Meta {
-        private int start;
-        private int display;
-        private int total;
-        private LocalDateTime lastBuildDate;
-    }
-
-    @Data
-    public static class Document {
+    public static class Item {
         private String title;
         private String link;
         private String description;
         private String bloggername;
         private String bloggerlink;
-        private LocalDateTime postdate;
+        private String postdate;
     }
 
     public BlogSearchDTO toBlogSearchDTO(){
-        boolean isEnd = (meta.getStart() + meta.getDisplay() - 1) / meta.getDisplay() == meta.getTotal() / meta.getDisplay();
+        boolean isEnd = (this.start + this.display - 1) / this.display == this.total / this.display;
 
-        List<BlogSearchDTO.Document> documentList = documents.stream().map(e -> BlogSearchDTO.Document.builder()
+        List<BlogSearchDTO.Document> itemList = items.stream().map(e -> BlogSearchDTO.Document.builder()
                 .title(e.getTitle())
                 .contents(e.getDescription())
                 .url(e.getBloggerlink())
@@ -51,10 +47,10 @@ public class NaverBlogSearchDTO {
         return BlogSearchDTO.builder()
                 .meta(BlogSearchDTO.Meta.builder()
                         .isEnd(isEnd)
-                        .pageableCount(meta.getDisplay())
-                        .totalCount(meta.getTotal())
+                        .pageableCount(this.display)
+                        .totalCount(this.total)
                         .build())
-                .documents(documentList)
+                .documents(itemList)
                 .build();
     }
 

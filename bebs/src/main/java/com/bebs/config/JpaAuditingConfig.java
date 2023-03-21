@@ -1,4 +1,4 @@
-package com.bebs.config.jpaConfig;
+package com.bebs.config;
 
 
 import com.bebs.config.springSecurityConfig.SpringSecurityAuditorAware;

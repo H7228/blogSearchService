@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -31,7 +29,7 @@ public class KakaoBlogSearchDTO{
         private String url;
         private String blogname;
         private String thumbnail;
-        private LocalDateTime datetime;
+        private String datetime;
     }
 
 
