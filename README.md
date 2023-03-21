@@ -1,6 +1,6 @@
-GITHUB: https://github.com/H7228/blogSearchService
-BUILD.jar: https://github.com/H7228/blogSearchService/tree/main/bebs/build/libs
-실행위치(bebs): java -jar build/libs/bebs-1.0-SNAPSHOT.jar
+##### GITHUB: https://github.com/H7228/blogSearchService
+##### BUILD.jar: https://github.com/H7228/blogSearchService/tree/main/bebs/build/libs
+##### 실행위치(bebs): java -jar build/libs/bebs-1.0-SNAPSHOT.jar
 
 
 # blogSearchService
