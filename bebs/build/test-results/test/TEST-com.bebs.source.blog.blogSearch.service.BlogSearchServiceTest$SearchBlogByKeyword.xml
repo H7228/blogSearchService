@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="searchBlogByKeyword 메서드" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-21T18:12:27" hostname="JiHongs-MacBook-Air.local" time="1.956">
+  <properties/>
+  <testcase name="정상적으로 검색 결과를 반환하는 경우 - kakao" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="1.885"/>
+  <testcase name="API 호출이 모두 실패하는 경우 ApiException이 발생" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.033"/>
+  <testcase name="정상적으로 검색 결과를 반환하는 경우 - naver" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

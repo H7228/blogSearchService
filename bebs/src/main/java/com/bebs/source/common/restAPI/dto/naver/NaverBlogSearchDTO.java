@@ -34,8 +34,9 @@ public class NaverBlogSearchDTO {
     }
 
     public BlogSearchDTO toBlogSearchDTO(){
-        boolean isEnd = (this.start + this.display - 1) / this.display == this.total / this.display;
+        if(total == 0) return new BlogSearchDTO();
 
+        boolean isEnd = ( (this.start + this.display - 1) / this.display ) == (this.total / this.display);
         List<BlogSearchDTO.Document> itemList = items.stream().map(e -> BlogSearchDTO.Document.builder()
                 .title(e.getTitle())
                 .contents(e.getDescription())

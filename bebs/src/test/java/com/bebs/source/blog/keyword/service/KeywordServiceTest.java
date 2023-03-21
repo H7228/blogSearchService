@@ -12,7 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,6 +25,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+@DataJpaTest
 @ExtendWith(MockitoExtension.class)
 class KeywordServiceTest {
 
@@ -31,6 +37,7 @@ class KeywordServiceTest {
 
     private ModelMapper mapper;
 
+
     @BeforeEach
     void setUp() {
         keywordService = new KeywordService(new ModelMapper(), keywordRepository);
@@ -40,19 +47,20 @@ class KeywordServiceTest {
     @Test
     @DisplayName("인기 검색어 조회")
     void retrievePopularKeywordsTest() {
+
         List<KeywordEntity> savedEntities = List.of(
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "kakao", 10000L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "bank", 140L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "old", 130L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "new", 120L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "01", 1520L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "02", 120L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "03", 110L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "test", 154L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "case", 251L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "keyword", 1L),
-                new KeywordEntity(String.valueOf(UUID.randomUUID()), "04", 2L)
-        );
+                new KeywordEntity("1", "kakao", 10000L),
+                new KeywordEntity("2", "bank", 140L),
+                new KeywordEntity("3", "old", 130L),
+                new KeywordEntity("4", "new", 120L),
+                new KeywordEntity("5", "01", 1520L),
+                new KeywordEntity("6", "02", 120L),
+                new KeywordEntity("7", "03", 110L),
+                new KeywordEntity("8", "test", 154L),
+                new KeywordEntity("9", "case", 251L),
+                new KeywordEntity("10", "keyword", 1L),
+                new KeywordEntity("11", "04", 2L));
+        when(keywordRepository.findAll()).thenReturn(savedEntities);
         when(keywordRepository.saveAll(savedEntities)).thenReturn(savedEntities);
 
         List<KeywordDTO> result = keywordService.retrievePopularKeywords();
@@ -62,6 +70,7 @@ class KeywordServiceTest {
         assertThat(result.get(0).getCount()).isEqualTo(10000L);
     }
 
+
     @Test
     @DisplayName("검색어 저장 - 존재하는 검색어")
     void saveOrUpdateKeyword_whenKeywordExists() {
@@ -70,7 +79,7 @@ class KeywordServiceTest {
                 .keyword("test")
                 .build();
 
-        KeywordEntity existEntity = new KeywordEntity(String.valueOf(UUID.randomUUID()), "test", 3L);
+        KeywordEntity existEntity = new KeywordEntity("2", "test", 3L);
 
         when(keywordRepository.findByKeyword(request.getKeyword())).thenReturn(Optional.of(existEntity));
         when(keywordRepository.save(existEntity)).thenReturn(existEntity);

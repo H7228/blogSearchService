@@ -63,6 +63,7 @@ public class BlogSearchService {
         try {
             NaverBlogSearchDTO searchDTO = naverApiService.searchNaverBlog(
                     request.toNaverBlogSearchRequestDTO());
+            if(searchDTO == null) return new BlogSearchDTO();
             return searchDTO.toBlogSearchDTO();
         } catch (ApiException e) {
             return null;
