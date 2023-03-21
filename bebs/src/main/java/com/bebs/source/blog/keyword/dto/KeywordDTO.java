@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KeywordDTO {
-    public String id;
-    public String keyword;
-    public Long count;
+    private String id;
+    private String keyword;
+    private Long count;
 
 }

@@ -1,12 +1,17 @@
 package com.bebs.source.blog.keyword.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_keyword_m")
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class KeywordEntity {
 
     @Id
