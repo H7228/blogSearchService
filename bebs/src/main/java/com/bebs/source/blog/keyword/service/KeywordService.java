@@ -49,7 +49,7 @@ public class KeywordService {
 
     public List<KeywordDTO> retrievePopularKeywords() {
         List<KeywordEntity> entities = repository.findTop10ByOrderByCountDesc();
-        return entities.stream()
+        return entities.subList(0, Math.min(entities.size(), 10)).stream()
                 .map(e -> KeywordDTO.builder()
                         .id(e.getId())
                         .keyword(e.getKeyword())

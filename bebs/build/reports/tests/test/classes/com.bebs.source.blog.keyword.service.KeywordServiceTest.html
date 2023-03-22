@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.129s</div>
+<div class="counter">0.086s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,7 +81,25 @@
 <tr>
 <td class="success">인기 검색어 조회</td>
 <td class="success">retrievePopularKeywordsTest()</td>
-<td class="success">0.129s</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">인기 검색어가 없는 경우</td>
+<td class="success">retrievePopularKeywords_whenEmpty_returnsEmptyList()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">검색어 저장 - 존재하지 않는 검색어</td>
+<td class="success">saveOrUpdateKeyword_whenKeywordDoesNotExist()</td>
+<td class="success">0.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">검색어 저장 - 존재하는 검색어</td>
+<td class="success">saveOrUpdateKeyword_whenKeywordExists()</td>
+<td class="success">0.022s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -89,22 +107,21 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>15:41:19.926 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-15:41:19.930 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-15:41:19.947 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest] from class [org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper]
-15:41:19.952 [Test worker] INFO org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest], using SpringBootContextLoader
-15:41:19.954 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: class path resource [com/bebs/source/blog/keyword/service/KeywordServiceTest-context.xml] does not exist
-15:41:19.954 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: class path resource [com/bebs/source/blog/keyword/service/KeywordServiceTestContext.groovy] does not exist
-15:41:19.954 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-15:41:19.954 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: KeywordServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-15:41:19.978 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.bebs.source.blog.keyword.service.KeywordServiceTest]
-15:41:20.002 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/hong/Desktop/blogSearchService/bebs/build/classes/java/main/com/bebs/Bebs.class]
-15:41:20.003 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.bebs.Bebs for test class com.bebs.source.blog.keyword.service.KeywordServiceTest
-15:41:20.004 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper - @TestExecutionListeners is not present for class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: using defaults.
-15:41:20.004 [Test worker] INFO org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-15:41:20.010 [Test worker] INFO org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@76b74e9c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2d72f75e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@8ab78bc, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5aa0dbf4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@16afbd92, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2c5d601e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7fe083b1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@23c388c2, org.springframework.test.context.event.EventPublishingTestExecutionListener@486be205, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@f713686, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@74f7d1d2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4b4dd216, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5ca17ab0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5a62b2a4, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1051817b]
-15:41:20.012 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4a9419d7 testClass = KeywordServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f3c6ac4 testClass = KeywordServiceTest, locations = '{}', classes = '{class com.bebs.Bebs}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@f6c03cb, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4c6daf0, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@5a14fe3d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64beebb7, [ImportsContextCustomizer@2e8ab815 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4f936da8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2289aca5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
-15:41:20.178 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@4a9419d7 testClass = KeywordServiceTest, testInstance = com.bebs.source.blog.keyword.service.KeywordServiceTest@2b917fb0, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f3c6ac4 testClass = KeywordServiceTest, locations = '{}', classes = '{class com.bebs.Bebs}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@f6c03cb, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4c6daf0, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@5a14fe3d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64beebb7, [ImportsContextCustomizer@2e8ab815 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4f936da8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2289aca5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false, 'org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.mocks' -&gt; org.mockito.internal.configuration.InjectingAnnotationEngine$$Lambda$450/0x0000000300362fa0@5e5073ab]]].
+<pre>17:10:52.831 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:10:52.835 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:10:52.850 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:10:52.855 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest], using SpringBootContextLoader
+17:10:52.857 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: class path resource [com/bebs/source/blog/keyword/service/KeywordServiceTest-context.xml] does not exist
+17:10:52.857 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: class path resource [com/bebs/source/blog/keyword/service/KeywordServiceTestContext.groovy] does not exist
+17:10:52.857 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:10:52.857 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: KeywordServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:10:52.879 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.bebs.source.blog.keyword.service.KeywordServiceTest]
+17:10:52.908 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/hong/Desktop/blogSearchService/bebs/build/classes/java/main/com/bebs/Bebs.class]
+17:10:52.908 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.bebs.Bebs for test class com.bebs.source.blog.keyword.service.KeywordServiceTest
+17:10:52.940 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.bebs.source.blog.keyword.service.KeywordServiceTest]: using defaults.
+17:10:52.941 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+17:10:52.946 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@65a4798f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@773f7880, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@878452d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@426b6a74, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4c51bb7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@83298d7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42a9e5d1, org.springframework.test.context.event.EventPublishingTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6b54655f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@665e9289, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7d3430a7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6f603e89, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2756c0a7]
+17:10:52.948 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@51850751 testClass = KeywordServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3ce3db41 testClass = KeywordServiceTest, locations = '{}', classes = '{class com.bebs.Bebs}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@56928307, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@32c726ee, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@36328d33, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@545b995e, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@566b8b54, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@336f1079, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2898ac89], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -114,16 +131,16 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.3)
 
-2023-03-22 15:41:20.362  INFO 58334 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : Starting KeywordServiceTest using Java 17.0.6 on hongui-noteubug.local with PID 58334 (started by hong in /Users/hong/Desktop/blogSearchService/bebs)
-2023-03-22 15:41:20.363  INFO 58334 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : The following profiles are active: application-key
-2023-03-22 15:41:20.522  INFO 58334 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-03-22 15:41:20.550  INFO 58334 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 1 JPA repository interfaces.
-2023-03-22 15:41:20.573  INFO 58334 --- [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
-2023-03-22 15:41:20.649  INFO 58334 --- [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:a5fb8d1d-cd5d-4ae9-a2b4-ef5ab3d155bf;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2023-03-22 15:41:20.786  INFO 58334 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-03-22 15:41:20.806  INFO 58334 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2023-03-22 15:41:20.827  INFO 58334 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-03-22 15:41:20.873  INFO 58334 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-03-22 17:10:53.106  INFO 61520 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : Starting KeywordServiceTest using Java 17.0.6 on hongui-noteubug.local with PID 61520 (started by hong in /Users/hong/Desktop/blogSearchService/bebs)
+2023-03-22 17:10:53.106  INFO 61520 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : The following profiles are active: application-key
+2023-03-22 17:10:53.440  INFO 61520 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-22 17:10:53.461  INFO 61520 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 1 JPA repository interfaces.
+2023-03-22 17:10:53.905  INFO 61520 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-22 17:10:53.925  INFO 61520 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2023-03-22 17:10:53.940  INFO 61520 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-22 17:10:53.975  INFO 61520 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-22 17:10:54.046  INFO 61520 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-22 17:10:54.053  INFO 61520 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
 Hibernate: 
     
     create table tb_keyword_m (
@@ -132,212 +149,16 @@ Hibernate:
         keyword varchar(255),
         primary key (id)
     )
-2023-03-22 15:41:21.092  INFO 58334 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-03-22 15:41:21.096  INFO 58334 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-03-22 15:41:21.303  INFO 58334 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : Started KeywordServiceTest in 1.113 seconds (JVM running for 1.798)
-2023-03-22 15:41:21.313  INFO 58334 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@4a9419d7 testClass = KeywordServiceTest, testInstance = com.bebs.source.blog.keyword.service.KeywordServiceTest@2b917fb0, testMethod = retrievePopularKeywordsTest@KeywordServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f3c6ac4 testClass = KeywordServiceTest, locations = '{}', classes = '{class com.bebs.Bebs}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@f6c03cb, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4c6daf0, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@5a14fe3d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64beebb7, [ImportsContextCustomizer@2e8ab815 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4f936da8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2289aca5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false, 'org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.mocks' -&gt; org.mockito.internal.configuration.InjectingAnnotationEngine$$Lambda$450/0x0000000300362fa0@5e5073ab]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@4f356b98]; rollback [true]
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* load com.bebs.source.blog.keyword.entity.KeywordEntity */ select
-        keywordent0_.id as id1_0_0_,
-        keywordent0_.count as count2_0_0_,
-        keywordent0_.keyword as keyword3_0_0_ 
-    from
-        tb_keyword_m keywordent0_ 
-    where
-        keywordent0_.id=?
-Hibernate: 
-    /* insert com.bebs.source.blog.keyword.entity.KeywordEntity
-        */ insert 
-        into
-            tb_keyword_m
-            (id, count, keyword) 
-        values
-            (null, ?, ?)
-Hibernate: 
-    /* select
-        generatedAlias0 
-    from
-        KeywordEntity as generatedAlias0 
-    order by
-        generatedAlias0.count desc */ select
-            keywordent0_.id as id1_0_,
-            keywordent0_.count as count2_0_,
-            keywordent0_.keyword as keyword3_0_ 
-        from
-            tb_keyword_m keywordent0_ 
-        order by
-            keywordent0_.count desc limit ?
-2023-03-22 15:41:21.433  INFO 58334 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@4a9419d7 testClass = KeywordServiceTest, testInstance = com.bebs.source.blog.keyword.service.KeywordServiceTest@2b917fb0, testMethod = retrievePopularKeywordsTest@KeywordServiceTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f3c6ac4 testClass = KeywordServiceTest, locations = '{}', classes = '{class com.bebs.Bebs}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@f6c03cb, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4c6daf0, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@5a14fe3d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64beebb7, [ImportsContextCustomizer@2e8ab815 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4f936da8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2289aca5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false, 'org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.mocks' -&gt; org.mockito.internal.configuration.InjectingAnnotationEngine$$Lambda$450/0x0000000300362fa0@5e5073ab]]
+2023-03-22 17:10:54.247  INFO 61520 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-22 17:10:54.251  INFO 61520 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-22 17:10:54.326  WARN 61520 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-22 17:10:54.467  INFO 61520 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 58b7e5b8-f4a2-4b2a-92c9-b2c514a5011e
+
+2023-03-22 17:10:54.537  INFO 61520 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@712594f4, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b6939e1, org.springframework.security.web.header.HeaderWriterFilter@48a61e38, org.springframework.security.web.csrf.CsrfFilter@7602c65d, org.springframework.security.web.authentication.logout.LogoutFilter@1b901f7b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@382608d0, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@71e89a26, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@30a4a111, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@65234a9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4aadf144, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65f3f9e2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f6a6d46, org.springframework.security.web.session.SessionManagementFilter@19656e21, org.springframework.security.web.access.ExceptionTranslationFilter@1e2c0292, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6dcc7696]
+2023-03-22 17:10:54.700  INFO 61520 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2023-03-22 17:10:55.207  INFO 61520 --- [    Test worker] c.b.s.b.k.service.KeywordServiceTest     : Started KeywordServiceTest in 2.244 seconds (JVM running for 2.892)
 </pre>
 </span>
 </div>
@@ -349,7 +170,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.2</a> at 2023. 3. 22. 오후 3:41:21</p>
+<a href="http://www.gradle.org">Gradle 7.2</a> at 2023. 3. 22. 오후 5:10:55</p>
 </div>
 </div>
 </body>

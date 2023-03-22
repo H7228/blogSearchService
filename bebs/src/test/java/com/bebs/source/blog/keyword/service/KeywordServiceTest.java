@@ -7,47 +7,42 @@ import com.bebs.source.blog.keyword.repository.KeywordRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@DataJpaTest
-@ExtendWith(MockitoExtension.class)
+
+@SpringBootTest
 class KeywordServiceTest {
 
-    @InjectMocks
+    @Autowired
     private KeywordService keywordService;
 
-    @Autowired
+    @MockBean
     private KeywordRepository keywordRepository;
 
     private ModelMapper mapper;
 
-    private List<KeywordEntity> savedEntities;
-
 
     @BeforeEach
     void setUp() {
-        keywordService = new KeywordService(new ModelMapper(), keywordRepository);
         mapper = new ModelMapper();
-        savedEntities = List.of(
+    }
+
+    @Test
+    @DisplayName("인기 검색어 조회")
+    void retrievePopularKeywordsTest() {
+
+        // given
+        List<KeywordEntity> savedEntities = List.of(
                 new KeywordEntity("1", "kakao", 10000L),
                 new KeywordEntity("2", "bank", 140L),
                 new KeywordEntity("3", "old", 130L),
@@ -60,19 +55,22 @@ class KeywordServiceTest {
                 new KeywordEntity("10", "keyword", 1L),
                 new KeywordEntity("11", "04", 2L));
 
-        keywordRepository.saveAll(savedEntities);
-    }
+        // when
+        Mockito.when(keywordRepository.findTop10ByOrderByCountDesc()).thenReturn(savedEntities);
+        List<KeywordDTO> actualKeywords = keywordService.retrievePopularKeywords();
 
-    @Test
-    @DisplayName("인기 검색어 조회")
-    @Transactional
-    void retrievePopularKeywordsTest() {
+        // then
+        assertEquals(actualKeywords.size(), 10);
 
-        List<KeywordDTO> result = keywordService.retrievePopularKeywords();
+        for (int i = 0; i < 10; i++) {
+            KeywordEntity expectedEntity = savedEntities.get(i);
+            KeywordDTO actualDTO = actualKeywords.get(i);
 
-        assertThat(result).hasSize(10);
-        assertThat(result.get(0).getKeyword()).isEqualTo("kakao");
-        assertThat(result.get(0).getCount()).isEqualTo(10000L);
+            assertEquals(expectedEntity.getId(), actualDTO.getId());
+            assertEquals(expectedEntity.getKeyword(), actualDTO.getKeyword());
+            assertEquals(expectedEntity.getCount(), actualDTO.getCount());
+        }
+
     }
 
     @Test
