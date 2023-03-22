@@ -35,13 +35,12 @@ class KeywordServiceTest {
     @InjectMocks
     private KeywordService keywordService;
 
-    @Mock
+    @Autowired
     private KeywordRepository keywordRepository;
 
     private ModelMapper mapper;
 
     private List<KeywordEntity> savedEntities;
-
 
 
     @BeforeEach
@@ -60,20 +59,21 @@ class KeywordServiceTest {
                 new KeywordEntity("9", "case", 251L),
                 new KeywordEntity("10", "keyword", 1L),
                 new KeywordEntity("11", "04", 2L));
+
         keywordRepository.saveAll(savedEntities);
     }
 
-//    @Test
-//    @DisplayName("인기 검색어 조회")
-//    @Transactional
-//    void retrievePopularKeywordsTest() {
-//
-//        Mockito.when(keywordRepository.saveAll(savedEntities)).thenReturn(savedEntities);
-//
-//        List<KeywordDTO> result = keywordService.retrievePopularKeywords();
-//
-//        //TODO: saveAll이 되지 않아 result가 0이 나오는 경우 해결 필요..
-//    }
+    @Test
+    @DisplayName("인기 검색어 조회")
+    @Transactional
+    void retrievePopularKeywordsTest() {
+
+        List<KeywordDTO> result = keywordService.retrievePopularKeywords();
+
+        assertThat(result).hasSize(10);
+        assertThat(result.get(0).getKeyword()).isEqualTo("kakao");
+        assertThat(result.get(0).getCount()).isEqualTo(10000L);
+    }
 
     @Test
     @DisplayName("인기 검색어가 없는 경우")
