@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="searchBlogByKeyword 메서드" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-22T08:10:55" hostname="hongui-noteubug.local" time="0.061">
+<testsuite name="searchBlogByKeyword 메서드" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-22T08:16:22" hostname="hongui-noteubug.local" time="0.051">
   <properties/>
-  <testcase name="정상적으로 검색 결과를 반환하는 경우 - kakao" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.053"/>
+  <testcase name="정상적으로 검색 결과를 반환하는 경우 - kakao" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.046"/>
   <testcase name="API 호출이 모두 실패하는 경우 ApiException이 발생" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.003"/>
-  <testcase name="정상적으로 검색 결과를 반환하는 경우 - naver" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.002"/>
+  <testcase name="정상적으로 검색 결과를 반환하는 경우 - naver" classname="com.bebs.source.blog.blogSearch.service.BlogSearchServiceTest$SearchBlogByKeyword" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
